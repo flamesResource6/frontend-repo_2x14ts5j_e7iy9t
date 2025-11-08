@@ -3,6 +3,7 @@ import { useState } from "react";
 
 export default function ContactForm() {
   const [status, setStatus] = useState("idle");
+  const whatsappLink = "https://api.whatsapp.com/send?phone=15551234567&text=Salam!%20I%27d%20like%20to%20learn%20about%20your%20Umrah%20packages.";
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -10,7 +11,7 @@ export default function ContactForm() {
     const data = Object.fromEntries(new FormData(form));
     try {
       setStatus("submitting");
-      // For prototype: simulate send
+      // Prototype: simulate send
       await new Promise((r) => setTimeout(r, 800));
       setStatus("success");
       form.reset();
@@ -58,16 +59,25 @@ export default function ContactForm() {
               <label className="mb-1 block text-sm font-medium text-gray-700">Message</label>
               <textarea name="message" rows="4" className="w-full rounded-md border border-gray-200 bg-white p-3 text-sm text-gray-900 outline-none focus:border-emerald-400" placeholder="Tell us how we can help"></textarea>
             </div>
-            <div className="col-span-1 md:col-span-2">
+            <div className="col-span-1 md:col-span-2 flex flex-col gap-3 sm:flex-row">
               <button
                 type="submit"
                 disabled={status === "submitting"}
-                className="inline-flex w-full items-center justify-center gap-2 rounded-md bg-emerald-600 px-5 py-3 text-sm font-semibold text-white shadow-sm hover:bg-emerald-700 disabled:opacity-70"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-md bg-amber-500 px-5 py-3 text-sm font-semibold text-white shadow-sm hover:bg-amber-600 disabled:opacity-70"
               >
                 <Send className="h-4 w-4" />
                 {status === "submitting" ? "Sending..." : status === "success" ? "Sent! We'll be in touch" : "Send Request"}
               </button>
+              <a
+                href={whatsappLink}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-md bg-emerald-600 px-5 py-3 text-sm font-semibold text-white shadow-sm hover:bg-emerald-700"
+              >
+                <Phone className="h-4 w-4" /> Chat on WhatsApp
+              </a>
             </div>
+            <p className="col-span-1 md:col-span-2 text-center text-xs text-gray-500">We typically respond within 1-2 business hours.</p>
           </form>
         </div>
       </div>

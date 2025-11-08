@@ -1,6 +1,7 @@
 import { Facebook, Instagram, Mail, Phone } from "lucide-react";
 
 export default function Footer() {
+  const whatsappLink = "https://api.whatsapp.com/send?phone=15551234567&text=Salam!%20I%27m%20interested%20in%20your%20Umrah%20packages.";
   return (
     <footer className="border-t border-gray-200 bg-white">
       <div className="mx-auto max-w-7xl px-6 py-10">
@@ -17,10 +18,11 @@ export default function Footer() {
             </ul>
           </div>
           <div>
-            <p className="text-sm font-semibold text-gray-900">Follow</p>
-            <div className="mt-3 flex gap-3">
-              <a href="#" className="rounded-md border border-gray-200 p-2 text-gray-600 hover:text-emerald-700"><Facebook className="h-4 w-4"/></a>
-              <a href="#" className="rounded-md border border-gray-200 p-2 text-gray-600 hover:text-emerald-700"><Instagram className="h-4 w-4"/></a>
+            <p className="text-sm font-semibold text-gray-900">Connect</p>
+            <div className="mt-3 flex flex-wrap gap-3">
+              <a href="https://facebook.com" target="_blank" rel="noreferrer" className="rounded-md border border-gray-200 p-2 text-gray-600 hover:text-emerald-700"><Facebook className="h-4 w-4"/></a>
+              <a href="https://instagram.com" target="_blank" rel="noreferrer" className="rounded-md border border-gray-200 p-2 text-gray-600 hover:text-emerald-700"><Instagram className="h-4 w-4"/></a>
+              <a href={whatsappLink} target="_blank" rel="noreferrer" className="rounded-md border border-gray-200 p-2 text-gray-600 hover:text-emerald-700">WhatsApp</a>
             </div>
           </div>
         </div>
